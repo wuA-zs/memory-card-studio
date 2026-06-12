@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memory Card Studio</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">Memory Card Studio</p>
+        <h1>今日记忆</h1>
+      </div>
+      <label class="library-control">
+        <span>卡片库</span>
+        <select id="librarySelect" aria-label="选择卡片库"></select>
+      </label>
+    </header>
+
+    <main class="app-shell">
+      <nav class="tabs" aria-label="页面板块">
+        <button class="tab is-active" type="button" data-tab="review">今日复习</button>
+        <button class="tab" type="button" data-tab="all">全部卡片</button>
+      </nav>
+
+      <section id="message" class="message" hidden></section>
+
+      <section id="reviewPanel" class="panel is-active" aria-labelledby="reviewTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">Due Cards</p>
+            <h2 id="reviewTitle">按遗忘曲线分组</h2>
+          </div>
+          <p id="reviewCounter" class="counter">0 / 0</p>
+        </div>
+
+        <div id="groupProgress" class="group-progress" hidden>
+          <span id="groupLabel" class="group-label">第 1 组 / 共 1 组</span>
+          <div id="groupDots" class="group-dots" aria-label="本组复习进度"></div>
+        </div>
+
+        <article id="reviewCard" class="study-card" aria-live="polite"></article>
+
+        <div class="card-actions">
+          <button id="prevCard" class="icon-button" type="button" aria-label="上一张">←</button>
+          <button id="showAnswer" class="primary-button" type="button">显示答案</button>
+          <button id="nextCard" class="icon-button" type="button" aria-label="下一张">→</button>
+        </div>
+
+        <div class="review-actions" aria-label="复习反馈">
+          <button type="button" data-grade="forgot">忘记</button>
+          <button type="button" data-grade="fuzzy">模糊</button>
+          <button type="button" data-grade="remembered">记得</button>
+        </div>
+      </section>
+
+      <section id="allPanel" class="panel" aria-labelledby="allTitle">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">Library</p>
+            <h2 id="allTitle">全部卡片</h2>
+          </div>
+          <p id="allCounter" class="counter">0 张</p>
+        </div>
+
+        <div class="filters">
+          <input id="searchInput" type="search" placeholder="搜索题面、答案、标签或来源" aria-label="搜索卡片">
+          <select id="typeFilter" aria-label="筛选题型">
+            <option value="all">全部题型</option>
+            <option value="qa">问答题</option>
+            <option value="cloze">填空题</option>
+            <option value="choice">选择题</option>
+          </select>
+        </div>
+
+        <div id="allCards" class="card-list"></div>
+      </section>
+    </main>
+
+    <div id="celebrationOverlay" class="celebration-overlay" hidden>
+      <section class="celebration-modal" role="dialog" aria-modal="true" aria-labelledby="celebrationTitle">
+        <p class="section-label">Group Complete</p>
+        <h2 id="celebrationTitle">这一组完成了</h2>
+        <div id="celebrationStats" class="celebration-stats"></div>
+        <button id="continueGroup" class="primary-button" type="button">下一组</button>
+      </section>
+    </div>
+
+    <script src="data/app-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

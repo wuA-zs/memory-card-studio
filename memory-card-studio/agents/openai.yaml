@@ -1,0 +1,4 @@
+interface:
+  display_name: "Memory Card Studio"
+  short_description: "Generate local memory cards and a zero-install review frontend."
+  default_prompt: "Create or update a local memory-card project, generate cards from files, or start today's review."
