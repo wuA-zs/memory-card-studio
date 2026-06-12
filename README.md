@@ -14,14 +14,17 @@ Memory Card Studio is an Agent Skill for creating local, zero-install memory-car
 
 ```text
 memory-card-studio/
-  SKILL.md
-  agents/openai.yaml
-  assets/static-card-project/
-  references/card-schema.md
-  references/frontend-behavior.md
-  scripts/refresh_app_data.py
-  scripts/update_review_state.py
-  scripts/validate_project.py
+  README.md
+  LICENSE
+  memory-card-studio/
+    SKILL.md
+    agents/openai.yaml
+    assets/static-card-project/
+    references/card-schema.md
+    references/frontend-behavior.md
+    scripts/refresh_app_data.py
+    scripts/update_review_state.py
+    scripts/validate_project.py
 ```
 
 ## Validation
@@ -29,6 +32,7 @@ memory-card-studio/
 From this repository root:
 
 ```powershell
+cd memory-card-studio
 python scripts/validate_project.py assets/static-card-project
 python -m py_compile scripts/refresh_app_data.py scripts/update_review_state.py scripts/validate_project.py
 ```
@@ -37,7 +41,7 @@ Use `python3` instead of `python` if that is how Python is exposed on your syste
 
 ## Install From GitHub
 
-After publishing this folder as a GitHub repository, install it with any Agent Skills-compatible tool that supports GitHub sources. For example, tools based on the Agent Skills spec generally expect a repository or repository path containing `SKILL.md`.
+After publishing this repository, install it with any Agent Skills-compatible tool that supports GitHub sources. This repository stores the skill in the `memory-card-studio/` directory so publishing tools can match the directory name to the skill name.
 
 ## Notes
 

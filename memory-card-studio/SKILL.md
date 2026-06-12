@@ -1,6 +1,7 @@
 ---
 name: memory-card-studio
 description: Use when the user asks to create or update persistent local memory-card projects, generate flashcards or spaced-repetition card libraries from files, create a zero-install card-review frontend, start today's due-card review, or study an existing local card library in conversation.
+license: MIT
 ---
 
 # Memory Card Studio
