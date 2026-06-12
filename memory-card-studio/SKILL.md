@@ -1,6 +1,6 @@
 ---
 name: memory-card-studio
-description: Use when the user asks to create or update persistent local memory-card projects, generate flashcards or spaced-repetition card libraries from files, create a zero-install card-review frontend, start today's due-card review, or study an existing local card library in conversation.
+description: Use when the user asks to create or update persistent local memory-card projects, generate flashcards or spaced-repetition card libraries from files, URLs, web pages, or other readable sources, create a zero-install card-review frontend, start today's due-card review, or study an existing local card library in conversation.
 license: MIT
 ---
 
@@ -35,7 +35,7 @@ Create local zero-install memory-card projects, generate grounded card libraries
 Choose one workflow:
 
 1. **Initialize or repair project**: user asks to create a memory-card frontend, local review app, card project, or gives a folder where cards should live.
-2. **Generate cards from files**: user asks to generate memory cards, flashcards, Q&A cards, cloze cards, choice cards, or review cards from files.
+2. **Generate cards from sources**: user asks to generate memory cards, flashcards, Q&A cards, cloze cards, choice cards, or review cards from files, URLs, web pages, pasted text, or other readable sources.
 3. **Start today's review**: user asks to begin memory, review due cards, study cards, or start card memory for an existing local card project.
 
 If generating cards for a folder that is not initialized, initialize first.
@@ -58,11 +58,11 @@ If generating cards for a folder that is not initialized, initialize first.
 7. Run `scripts/validate_project.py <target-folder>`.
 8. Report created files, repaired frontend files, preserved data files, and the absolute `index.html` link.
 
-## Generate Cards From Files
+## Generate Cards From Sources
 
 1. Read `references/card-schema.md`.
 2. Resolve and initialize the target project folder if needed.
-3. Extract meaningful source content using local tools. Any file type is acceptable when Codex can extract grounded text or structured data.
+3. Extract meaningful source content using local tools. Any file type, URL, web page, pasted text, or other source is acceptable when Codex can extract grounded text or structured data.
 4. Generate atomic cards that test one idea each:
    - `qa` for concepts, reasons, steps, tradeoffs, principles, examples, and constraints.
    - `cloze` for key terms, short facts, numbers, formulas, named conclusions, and compact definitions.
