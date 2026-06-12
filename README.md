@@ -113,3 +113,94 @@ python -m py_compile scripts/refresh_app_data.py scripts/update_review_state.py 
 ## License
 
 MIT
+
+---
+
+## English
+
+Memory Card Studio is an Agent Skill that helps an AI assistant generate memory cards from local files, web links, pasted text, or other readable sources, then create a zero-install local review frontend.
+
+It is useful for:
+
+- Turning Markdown files, notes, course materials, web pages, and technical documents into QA, cloze, and multiple-choice cards.
+- Creating a review page that can be opened locally without Node, npm, a database, or a cloud service.
+- Storing card libraries and spaced-repetition state as JSON for backup, migration, and further editing.
+- Running daily review sessions in chat while persisting each card result to local files.
+
+## Key Features
+
+- **Multiple source types**: Generate cards from local files, URLs, web pages, pasted text, or any source the agent can read.
+- **Local-first output**: Generated projects are static HTML, CSS, JavaScript, and JSON files.
+- **Zero-install frontend**: Open `index.html` directly to review cards.
+- **Verifiable data**: Built-in scripts validate card libraries, review state, and browser snapshots.
+- **Persistent review progress**: `update_review_state.py` writes each `remembered / fuzzy / forgotten` result into `review-state.json`.
+
+## Install
+
+With GitHub CLI Agent Skills preview:
+
+```powershell
+gh skill install wuA-zs/memory-card-studio
+```
+
+With the `skills` CLI:
+
+```powershell
+npx skills add wuA-zs/memory-card-studio --list
+npx skills add wuA-zs/memory-card-studio --skill memory-card-studio
+```
+
+## Example Prompts
+
+```text
+Use memory-card-studio to generate memory cards from D:\notes\python.md and create a local review project.
+```
+
+```text
+Use memory-card-studio to generate memory cards from https://example.com/article and create a local review project.
+```
+
+```text
+Start today's memory-card review.
+```
+
+## Data Model
+
+Generated card projects include:
+
+- `data/libraries/*.json`: card libraries and card content.
+- `data/review-state.json`: spaced-repetition progress.
+- `data/app-data.js`: a browser snapshot generated from JSON. It is not the source of truth.
+
+Browser `localStorage` is only temporary interaction state. Persistent review progress must be written by the agent through:
+
+```powershell
+python scripts/update_review_state.py <target-folder> <card-id> remembered
+python scripts/update_review_state.py <target-folder> <card-id> fuzzy
+python scripts/update_review_state.py <target-folder> <card-id> forgotten
+```
+
+Feedback meanings:
+
+- `remembered`: remembered
+- `fuzzy`: partially remembered
+- `forgotten`: forgotten
+
+## Validation
+
+From the repository root:
+
+```powershell
+cd memory-card-studio
+python scripts/validate_project.py assets/static-card-project
+python -m py_compile scripts/refresh_app_data.py scripts/update_review_state.py scripts/validate_project.py
+```
+
+Use `python3` instead of `python` if that is how Python is exposed on your system.
+
+## Design Boundaries
+
+- Do not introduce Node, npm, React, Vite, databases, local servers, or cloud services into generated projects.
+- Do not overwrite existing card libraries or `review-state.json` unless the user explicitly asks to rebuild them.
+- Do not edit `data/app-data.js` as source data; regenerate it from JSON with `refresh_app_data.py`.
+- Do not treat ordinary study questions as card-project work unless the user explicitly asks for persistent cards, a card library, or a review session.
