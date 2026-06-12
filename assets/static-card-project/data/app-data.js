@@ -1,0 +1,95 @@
+window.MEMORY_CARD_STUDIO_DATA = {
+  "libraries": [
+    {
+      "id": "default",
+      "name": "示例卡片库",
+      "sourceFiles": [],
+      "createdAt": "2026-06-11T00:00:00+08:00",
+      "updatedAt": "2026-06-11T00:00:00+08:00",
+      "cards": [
+        {
+          "id": "sample-qa-001",
+          "type": "qa",
+          "front": "这个项目为什么不依赖 Node 或 npm？",
+          "back": "因为它面向没有前端基础的用户，采用纯静态 HTML、CSS、JavaScript 和 JSON，方便直接打开和备份。",
+          "source": "内置示例：项目目标",
+          "tags": [
+            "零安装",
+            "本地前端"
+          ],
+          "createdAt": "2026-06-11T00:00:00+08:00"
+        },
+        {
+          "id": "sample-cloze-001",
+          "type": "cloze",
+          "front": "浏览器端只负责 {{c1::展示卡片}}，复杂文件解析由 Codex 完成。",
+          "back": "浏览器端只负责展示卡片，复杂文件解析由 Codex 完成。",
+          "cloze": {
+            "text": "浏览器端只负责 {{c1::展示卡片}}，复杂文件解析由 Codex 完成。",
+            "answers": [
+              "展示卡片"
+            ]
+          },
+          "source": "内置示例：职责边界",
+          "tags": [
+            "填空",
+            "职责边界"
+          ],
+          "createdAt": "2026-06-11T00:00:00+08:00"
+        },
+        {
+          "id": "sample-choice-001",
+          "type": "choice",
+          "front": "哪一种方式最适合这个 skill 的第一版前端？",
+          "back": "正确答案：纯静态前端。它不需要安装依赖，适合低技术门槛用户。",
+          "choice": {
+            "question": "哪一种方式最适合这个 skill 的第一版前端？",
+            "options": [
+              "Vite + React",
+              "纯静态前端",
+              "数据库应用",
+              "云端服务"
+            ],
+            "answerIndex": 1,
+            "explanation": "纯静态前端不需要安装依赖，用户可以直接打开本地文件使用。"
+          },
+          "source": "内置示例：技术栈选择",
+          "tags": [
+            "选择题",
+            "技术栈"
+          ],
+          "createdAt": "2026-06-11T00:00:00+08:00"
+        }
+      ]
+    }
+  ],
+  "reviewState": {
+    "version": 1,
+    "cards": {
+      "sample-qa-001": {
+        "ease": 2.5,
+        "intervalDays": 1,
+        "reviewCount": 0,
+        "lastReviewedAt": null,
+        "nextReviewAt": "2026-06-11T00:00:00+08:00",
+        "status": "new"
+      },
+      "sample-cloze-001": {
+        "ease": 2.5,
+        "intervalDays": 1,
+        "reviewCount": 0,
+        "lastReviewedAt": null,
+        "nextReviewAt": "2026-06-11T00:00:00+08:00",
+        "status": "new"
+      },
+      "sample-choice-001": {
+        "ease": 2.5,
+        "intervalDays": 1,
+        "reviewCount": 0,
+        "lastReviewedAt": null,
+        "nextReviewAt": "2026-06-11T00:00:00+08:00",
+        "status": "new"
+      }
+    }
+  }
+};
